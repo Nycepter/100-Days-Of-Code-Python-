@@ -19,7 +19,8 @@ while True:
                 "Would you like to 'enter key', or 'go back' to your boat?\n")
             if Choice1_A_1 == "enter key":
                 if HasKey == False:
-                    print("\nYou do not the key that goes to this lock, go find it!")
+                    print(
+                        "\nYou do not have the key that goes to this lock, go find it!")
                     print("Now begone!")
                     continue
                 if HasKey == True:
