@@ -1,10 +1,11 @@
-
+print("WELCOME! To play, please type your respose below the prompt. only type lowercase and exactly as the options appear within single quotes(do not include the single quotes in your answer). There are a couple places where you have to figure out what to type, good luck!!! \n")
 print("You have tracked down the island that is said to contain a legendary treasure! Now, you just have to find it! Getting off of your ship and onto the island...")
+print("You see a giant temple in the distance. It seems to be at the center of the island. There are also some ruins to the left of where you landed and to you right is the remains of an old pirate ship.")
 HasKey = False
-
+OpenLock = False
 while True:
 
-    print("\nYou see a giant temple in the distance. It seems to be at the center of the island. There are also some ruins to the left of where you landed and to you right is the remains of an old pirate ship.")
+    print("\nWhere would you like to go?")
     Choice1 = input(
         "Would you like to go to the 'temple', investigate the 'ruins' or look at the remains of the 'pirate ship'?\n")
 
@@ -12,7 +13,7 @@ while True:
         print("\nAs you are heading towards the temple, you come across a sign that says 'TURN BACK NOW OR SUFFER'. You notice a trail leading from the sign into the woods.")
         Choice1_A = input(
             "Would you like to ignore the sign and continue to the 'temple', take the signs advice and 'turn back', or 'follow the trail' into the woods?\n")
-        if Choice1_A == 'temple':
+        if Choice1_A == 'temple' and OpenLock == False:
             print("\nYou arrive at the temple! There is a sturdy gate locking the entrance. The gate has a key hole!")
             Choice1_A_1 = input(
                 "Would you like to 'enter key', or 'go back' to your boat?\n")
@@ -22,6 +23,7 @@ while True:
                     print("Now begone!")
                     continue
                 if HasKey == True:
+                    OpenLock = True
                     print(
                         "\nAs you turn the key, the lock drops away revaling a screen that has an equation and a place for you to enter an answer.")
                     print("The equation is (4x3-6+1)3(12÷6+1).")
@@ -42,6 +44,31 @@ while True:
                             print("that answer is not correct! Please try again.")
                             print("Now away with you!")
                             continue
+                    if Choice1_A_2 == "go back":
+                        continue
+        if Choice1_A == "temple" and OpenLock == True:
+            print("\nThe lock is still open, you see a screen that has an equation and a place for you to enter an answer.")
+            print("The equation is (4x3-6+1)3(12÷6+1).")
+            Choice1_A_2 = input(
+                "Would you like to 'enter an answer' or 'go back'?\n")
+            if Choice1_A_2 == "enter an answer":
+                Answer = input("\nWhat is your answer?\n")
+                if Answer == "2":
+                    print(
+                        "\n\n\nThe gate opens up! You travel into the temple, before your very eyes is more treasure than you could have imagined in your wildest dreams!")
+                    print("DING!!!!")
+                    print("DING!!!!DING!!!!DING!!!!")
+                    print("It's your alarm.")
+                    print(
+                        "Evidently you could have imagined it in your wildest dreams...")
+                    quit()
+                else:
+                    print("that answer is not correct! Please try again.")
+                    print("Now away with you!")
+                    continue
+            if Choice1_A_2 == "go back":
+                continue
+
         if Choice1_A == "follow the trail":
             print("\nAs you are walking along the trail, you somehow get lost and find yourself back where you began!")
             continue
@@ -55,7 +82,7 @@ while True:
         if Choice1_B == "go back":
             continue
 
-    elif Choice1 == "pirate ship":
+    elif Choice1 == "pirate ship" and HasKey == False:
         print("\nThe ship is in many pieces, most of which have degraded beyond recognition. However, the cabin seems to be unaturally preseerved. As you approach the door, something begins to appear on the door!\n '2B||!2B'\n  You get the sense that the door is waiting for you to respond...")
         Choice1_C = input(
             "Would you like to forget about this magical nonsense and 'go back' to your boat, or 'respond' to the cabin door?\n")
@@ -81,3 +108,16 @@ while True:
             continue
         if Choice1_C == "go back":
             continue
+
+    elif Choice1 == "pirate ship" and HasKey == True:
+        print("The cabin you saw before is now gone! How strange...")
+        print("Almost as strange as finding yourself back where you began, with no memory of how you got here!")
+        continue
+
+    elif Choice1 == "wake up":
+        print("\n\n\nYou suddenly find yourself directly in the treasure room! Before your very eyes is more treasure than you could have imagined in your wildest dreams!!!")
+        print("DING!!!!")
+        print("DING!!!!DING!!!!DING!!!!")
+        print("It's your alarm.")
+        print("Evidently you could have imagined it in your wildest dreams...")
+        quit()
