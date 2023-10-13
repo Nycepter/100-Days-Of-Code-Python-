@@ -1,3 +1,4 @@
+
 print("You have tracked down the island that is said to contain a legendary treasure! Now, you just have to find it! Getting off of your ship and onto the island...")
 HasKey = False
 
