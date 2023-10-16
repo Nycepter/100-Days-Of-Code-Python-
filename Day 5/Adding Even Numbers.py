@@ -42,7 +42,7 @@ while True:
 
 
 # for Number in range("Starting Number", "Ending Number", "Increment Value"):
-# In the code below, we start at 2 and go to the input ( input of 100 would be 1-99 so we add 1 to include 100), then increment the number by 2 so that we keep the numbers adding even only.
+# In the code below, we start at 2 and go to the input -input of 100 would be 1-99 so we add 1 to include 100-, then increment the number by 2 so that we keep the numbers adding even only.
 
 Target = int(input("Enter your number here. \n"))
 Total = 0
