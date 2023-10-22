@@ -3,7 +3,7 @@
 def greet(name, location):
     print("Hello " + name)
     print("Hello " + name + " I see you live in " + location)
-    print(location + " is a good place to live.")
+    print(location + "is a good place to live.")
 
 
 nameInput = input("Insert name here \n")
