@@ -34,13 +34,13 @@ while True:
             function = operations[f'{input("Enter the symbol for what you would like to do. +, -, *, or /: --> ")}']
             while reset == True:
                 try:
-                    n1 = int(input("\nWhat is the first number?\n--> "))
+                    n1 = float(input("\nWhat is the first number?\n--> "))
                 except:
                     print("Invalid input, please try again\n")
                     continue
                 while reset == True:
                     try:
-                        n2 = int(input("\nWhat is the second number?\n--> "))
+                        n2 = float(input("\nWhat is the second number?\n--> "))
 
                     except:
                         print("Invalid input, please try again\n")
@@ -63,7 +63,7 @@ while True:
                 while reset == False:
                     n1 = answer
                     try:
-                        n2 = int(
+                        n2 = float(
                             input("\nWhat number would you like to execute the function with?\n--> "))
                     except:
                         print("Invalid input, please try again\n")
