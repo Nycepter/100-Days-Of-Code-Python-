@@ -137,7 +137,7 @@ while True:
         print("The dealer is out of money, you took it all!")
         exit()
     elif player_money < 1:
-        print("You have no money to bet, go home!")
+        print("You have no money left to bet, go home!")
         exit()
     player_bet = input
     choice1 = input("Play new round of blackjack? \n > ")
