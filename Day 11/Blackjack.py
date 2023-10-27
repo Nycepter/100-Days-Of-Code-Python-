@@ -142,14 +142,18 @@ while True:
     player_bet = input
     choice1 = input("Play new round of blackjack? \n > ")
     if choice1 == "yes":
-        print(f"Your avaliable balance is ${player_money}")
-        player_bet = int(input("How much money would you like to bet? \n > "))
-        if player_bet > player_money:
-            print("Please enter an amount you actually have.")
-            continue
-        elif player_bet < 1:
-            print("Please bet money.")
-            continue
+        while True:
+            print(f"Your avaliable balance is ${player_money}")
+            player_bet = int(
+                input("How much money would you like to bet? \n > "))
+            if player_bet > player_money:
+                print("Please enter an amount you actually have.")
+                continue
+            elif player_bet < 1:
+                print("Please bet money.")
+                continue
+            else:
+                break
 
         result_player = []
         result_dealer = []
