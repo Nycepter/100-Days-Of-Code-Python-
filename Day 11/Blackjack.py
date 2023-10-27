@@ -143,7 +143,7 @@ while True:
     choice1 = input("Play new round of blackjack? \n > ")
     if choice1 == "yes":
         print(f"Your avaliable balance is ${player_money}")
-        player_bet = int(input("How much money would you like to bet?"))
+        player_bet = int(input("How much money would you like to bet? \n > "))
         if player_bet > player_money:
             print("Please enter an amount you actually have.")
             continue
@@ -255,6 +255,8 @@ while True:
                             continue
                         elif dealer_score > 21:
                             print("Dealer busts, you win!")
+                            player_money += player_bet
+                            dealer_money -= player_bet
                             continue
                         elif 21 - player_score < 21 - dealer_score:
                             print("You win!")
@@ -290,6 +292,8 @@ while True:
                         continue
                     elif dealer_score > 21:
                         print("Dealer busts, you win!")
+                        player_money += player_bet
+                        dealer_money -= player_bet
                         continue
                     elif 21 - player_score < 21 - dealer_score:
                         print("You win!")
@@ -325,6 +329,8 @@ while True:
                     continue
                 elif dealer_score > 21:
                     print("Dealer busts, you win!")
+                    player_money += player_bet
+                    dealer_money -= player_bet
                     continue
                 elif 21 - player_score < 21 - dealer_score:
                     print("You win!")
@@ -359,6 +365,8 @@ while True:
                 continue
             elif dealer_score > 21:
                 print("Dealer busts, you win!")
+                player_money += player_bet
+                dealer_money -= player_bet
                 continue
             elif 21 - player_score < 21 - dealer_score:
                 print("You win!")
