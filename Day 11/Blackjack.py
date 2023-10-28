@@ -58,6 +58,7 @@ player = "player"
 dealer = "dealer"
 player_money = 1000
 dealer_money = 1000000
+reset = False
 
 
 def deal(recipient):
@@ -133,6 +134,63 @@ def hit(recipient):
 print("Welcome to blackjack! \n")
 
 while True:
+    while reset == True:
+        deck = {
+            'ace-clubs': [1, 11],
+            'two-clubs': 2,
+            'three-clubs': 3,
+            'four-clubs': 4,
+            'five-clubs': 5,
+            'six-clubs': 6,
+            'seven-clubs': 7,
+            'eight-clubs': 8,
+            'nine-clubs': 9,
+            'ten-clubs': 10,
+            'jack-clubs': 10,
+            'queen-clubs': 10,
+            'king-clubs': 10,
+            'ace-hearts': [1, 11],
+            'two-hearts': 2,
+            'three-hearts': 3,
+            'four-hearts': 4,
+            'five-hearts': 5,
+            'six-hearts': 6,
+            'seven-hearts': 7,
+            'eight-hearts': 8,
+            'nine-hearts': 9,
+            'ten-hearts': 10,
+            'jack-hearts': 10,
+            'queen-hearts': 10,
+            'king-hearts': 10,
+            'ace-spades': [1, 11],
+            'two-spades': 2,
+            'three-spades': 3,
+            'four-spades': 4,
+            'five-spades': 5,
+            'six-spades': 6,
+            'seven-spades': 7,
+            'eight-spades': 8,
+            'nine-spades': 9,
+            'ten-spades': 10,
+            'jack-spades': 10,
+            'queen-spades': 10,
+            'king-spades': 10,
+            'ace-diamonds': [1, 11],
+            'two-diamonds': 2,
+            'three-diamonds': 3,
+            'four-diamonds': 4,
+            'five-diamonds': 5,
+            'six-diamonds': 6,
+            'seven-diamonds': 7,
+            'eight-diamonds': 8,
+            'nine-diamonds': 9,
+            'ten-diamonds': 10,
+            'jack-diamonds': 10,
+            'queen-diamonds': 10,
+            'king-diamonds': 10,
+        }
+        reset = False
+        continue
     if dealer_money < 1:
         print("The dealer is out of money, you took it all!")
         exit()
@@ -140,7 +198,7 @@ while True:
         print("You have no money left to bet, go home!")
         exit()
     player_bet = input
-    choice1 = input("Play new round of blackjack? \n > ")
+    choice1 = input("Play new round of blackjack? 'yes' or 'no'\n > ")
     if choice1 == "yes":
         while True:
             print(f"Your avaliable balance is ${player_money}")
@@ -180,6 +238,7 @@ while True:
             print("BUST, you lose!")
             player_money -= player_bet
             dealer_money += player_bet
+            reset = True
             continue
         elif player_score == 21:
             print("You have a Blackjack!")
@@ -198,6 +257,7 @@ while True:
                 print("BUST, you lose!")
                 player_money -= player_bet
                 dealer_money += player_bet
+                reset = True
                 continue
             elif player_score == 21:
                 print("You have a Blackjack!")
@@ -215,6 +275,7 @@ while True:
                     print("BUST, you lose!")
                     player_money -= player_bet
                     dealer_money += player_bet
+                    reset = True
                     continue
                 elif player_score == 21:
                     print("You have a Blackjack!")
@@ -233,6 +294,7 @@ while True:
                         print("BUST, you lose!")
                         player_money -= player_bet
                         dealer_money += player_bet
+                        reset = True
                         continue
                     elif player_score == 21:
                         print("You have a Blackjack!")
@@ -246,31 +308,37 @@ while True:
                             f'Dealer cards are {dealer_cards}, worth {dealer_score} points.')
                         if player_score == dealer_score:
                             print("It's a draw!")
+                            reset = True
                             continue
                         elif player_score == 21:
                             print("You win!")
                             player_money += player_bet
                             dealer_money -= player_bet
+                            reset = True
                             continue
                         elif dealer_score == 21:
                             print("You lose!")
                             player_money -= player_bet
                             dealer_money += player_bet
+                            reset = True
                             continue
                         elif dealer_score > 21:
                             print("Dealer busts, you win!")
                             player_money += player_bet
                             dealer_money -= player_bet
+                            reset = True
                             continue
                         elif 21 - player_score < 21 - dealer_score:
                             print("You win!")
                             player_money += player_bet
                             dealer_money -= player_bet
+                            reset = True
                             continue
                         elif 21 - player_score > 21 - dealer_score:
                             print("You lose!")
                             player_money -= player_bet
                             dealer_money += player_bet
+                            reset = True
                             continue
 
                 elif choice4 == "stay":
@@ -283,31 +351,37 @@ while True:
                         f'Dealer cards are {dealer_cards}, worth {dealer_score} points.')
                     if player_score == dealer_score:
                         print("It's a draw!")
+                        reset = True
                         continue
                     elif player_score == 21:
                         print("You win!")
                         player_money += player_bet
                         dealer_money -= player_bet
+                        reset = True
                         continue
                     elif dealer_score == 21:
                         print("You lose!")
                         player_money -= player_bet
                         dealer_money += player_bet
+                        reset = True
                         continue
                     elif dealer_score > 21:
                         print("Dealer busts, you win!")
                         player_money += player_bet
                         dealer_money -= player_bet
+                        reset = True
                         continue
                     elif 21 - player_score < 21 - dealer_score:
                         print("You win!")
                         player_money += player_bet
                         dealer_money -= player_bet
+                        reset = True
                         continue
                     elif 21 - player_score > 21 - dealer_score:
                         print("You lose!")
                         player_money -= player_bet
                         dealer_money += player_bet
+                        reset = True
                         continue
 
             elif choice3 == "stay":
@@ -320,31 +394,37 @@ while True:
                     f'Dealer cards are {dealer_cards}, worth {dealer_score} points.')
                 if player_score == dealer_score:
                     print("It's a draw!")
+                    reset = True
                     continue
                 elif player_score == 21:
                     print("You win!")
                     player_money += player_bet
                     dealer_money -= player_bet
+                    reset = True
                     continue
                 elif dealer_score == 21:
                     print("You lose!")
                     player_money -= player_bet
                     dealer_money += player_bet
+                    reset = True
                     continue
                 elif dealer_score > 21:
                     print("Dealer busts, you win!")
                     player_money += player_bet
                     dealer_money -= player_bet
+                    reset = True
                     continue
                 elif 21 - player_score < 21 - dealer_score:
                     print("You win!")
                     player_money += player_bet
                     dealer_money -= player_bet
+                    reset = True
                     continue
                 elif 21 - player_score > 21 - dealer_score:
                     print("You lose!")
                     player_money -= player_bet
                     dealer_money += player_bet
+                    reset = True
                     continue
         elif choice2 == "stay":
             while dealer_score < 17:
@@ -356,32 +436,38 @@ while True:
                 f'Dealer cards are {dealer_cards}, worth {dealer_score} points.')
             if player_score == dealer_score:
                 print("It's a draw!")
+                reset = True
                 continue
             elif player_score == 21:
                 print("You win!")
                 player_money += player_bet
                 dealer_money -= player_bet
+                reset = True
                 continue
             elif dealer_score == 21:
                 print("You lose!")
                 player_money -= player_bet
                 dealer_money += player_bet
+                reset = True
                 continue
             elif dealer_score > 21:
                 print("Dealer busts, you win!")
                 player_money += player_bet
                 dealer_money -= player_bet
+                reset = True
                 continue
             elif 21 - player_score < 21 - dealer_score:
                 print("You win!")
                 player_money += player_bet
                 dealer_money -= player_bet
+                reset = True
 
                 continue
             elif 21 - player_score > 21 - dealer_score:
                 print("You lose!")
                 player_money -= player_bet
                 dealer_money += player_bet
+                reset = True
                 continue
     elif choice2 == "no":
         exit()
