@@ -16,10 +16,18 @@ def Guessing_Game():
     Score = 0
     correct_guesses = 0
     incorrect_guesses = 0
+    Scoreadd = 0
     while True:
         Win = False
         LIVES = difficulty(input(
             "\nDo you want to play on 'Easy', 'Hard', or 'Ironman'? \n").lower())
+        if LIVES == 1:
+            Scoreadd = 1000
+        elif LIVES == 5:
+            Scoreadd = 100
+        else:
+            Scoreadd = 10
+
         while LIVES > 0 and Win == False:
             Number = random.randrange(1, 101)
             print(f"Guesses remaining: {LIVES}")
@@ -37,7 +45,7 @@ def Guessing_Game():
                     continue
                 elif Guess == Number:
                     correct_guesses += 1
-                    Score += 10
+                    Score += Scoreadd
                     print("That is the number, you win!")
                     print(
                         f"Score: {Score / (correct_guesses + incorrect_guesses)}")
