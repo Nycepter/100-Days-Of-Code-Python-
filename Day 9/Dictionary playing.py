@@ -31,11 +31,13 @@ dictionary2 = {
 }
 
 
-for keys in dictionary:
-    print(keys)
-    print(dictionary[keys])
+# for keys in dictionary:
+#     print(keys)
+#     print(dictionary[keys])
 
-    if dictionary[keys] == dictionary['Libr']:
-        for thing in dictionary['Libr']:
-            print(thing)
-            print(dictionary['Libr'][thing])
+#     if dictionary[keys] == dictionary['Libr']:
+#         for thing in dictionary['Libr']:
+#             print(thing)
+#             print(dictionary['Libr'][thing])
+
+print(dictionary2)
