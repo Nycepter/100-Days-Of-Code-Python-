@@ -27,27 +27,28 @@ screen.onkey(snake.left, "a")
 screen.onkey(snake.right, "Right")
 screen.onkey(snake.right, "d")
 
+
 # Game loop
 while game_is_on:
 
     screen.update()
-
     time.sleep(.1)
     snake.move()
 
     if snake.head.distance(food) < 15:
         food.refresh()
+        user_score.score += 1
         user_score.update_score()
         snake.extend()
 
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_is_on = False
-        user_score.game_over()
+        user_score.reset()
+        snake.reset()
 
     for seg in snake.segments[2:]:
         if snake.head.distance(seg) < 10:
-            game_is_on = False
-            user_score.game_over()
+            user_score.reset()
+            snake.reset()
 
 
 screen.exitonclick()
