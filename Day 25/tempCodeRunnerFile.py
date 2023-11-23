@@ -1,2 +1,2 @@
 
-print(data)
+print(avg)
