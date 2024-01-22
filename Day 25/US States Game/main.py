@@ -29,12 +29,12 @@ while len(guessed_states) < 50:
         turt.write(answer_state)
 
 
-States_missed = []
-for state in States:
-    if state in guessed_states:
-        pass
-    else:
-        States_missed.append(state)
+States_missed = [state for state in States if state not in guessed_states]
+# for state in States:
+#     if state in guessed_states:
+#         pass
+#     else:
+#         States_missed.append(state)
 
 States_Missed_Export = pandas.DataFrame(States_missed)
 
