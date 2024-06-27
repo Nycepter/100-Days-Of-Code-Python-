@@ -51,6 +51,8 @@ def ask_confirmation():
     return response     
 
 
+
+
 def Save():
 
     website = website_entry.get()
@@ -90,8 +92,121 @@ def Save():
         else:
             pass
 
+def get_main_keys_from_json():
+    try:
+        with open("data.json", 'r') as file:
+            data = json.load(file)
+            main_keys = list(data.keys())
+            return main_keys
+    except FileNotFoundError:
+        print(f"Error: The file {data.json} was not found.")
+        return []
+    except json.JSONDecodeError:
+        print(f"Error: The file {data.json} does not contain valid JSON.")
+        return []
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return []
+    
+def get_username_subkeys():
+    usernames = []
+    try:
+        with open("data.json", 'r') as file:
+            data = json.load(file)
+            for sub_dict in data.values():
+                # Check if 'Username' key exists in the sub-dictionary
+                if 'Username' in sub_dict:
+                    usernames.append(sub_dict['Username'])
+                else:
+                    usernames.append('Username not found')
+        return usernames
+    except FileNotFoundError:
+        print(f"Error: The file {data.json} was not found.")
+        return usernames  # Return empty list or already accumulated usernames
+    except json.JSONDecodeError:
+        print(f"Error: The file {data.json} does not contain valid JSON.")
+        return usernames  # Return empty list or already accumulated usernames
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+    
+def get_password_subkeys():
+    passwords = []
+    try:
+        with open("data.json", 'r') as file:
+            data = json.load(file)
+            for sub_dict in data.values():
+                # Check if 'password' key exists in the sub-dictionary
+                if 'Password' in sub_dict:
+                    passwords.append(sub_dict['Password'])
+                else:
+                    passwords.append('password not found')
+        return passwords
+    except FileNotFoundError:
+        print(f"Error: The file {data.json} was not found.")
+        return passwords  # Return empty list or already accumulated passwords
+    except json.JSONDecodeError:
+        print(f"Error: The file {data.json} does not contain valid JSON.")
+        return passwords  # Return empty list or already accumulated passwords
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+def list_button_press():
+
+
+    rowsite= 0
+    rowname= 0
+    rowpass= 0
+    website_list = get_main_keys_from_json()
+    username_list = get_username_subkeys()
+    password_list = get_password_subkeys()
+    copy_image_path = "copy.png"
+    copy_image = CTkImage(dark_image=Image.open(copy_image_path), size=(20, 20))
+
+
+    list_popup = CTkToplevel(master=window)
+    list_popup.title("Websites and Apps")
+    list_popup.config(padx=20, pady=20)
+    list_popup.attributes('-topmost', True)
+
+    list_popup_list = CTkScrollableFrame(master=list_popup, height=400, width=250)
+    list_popup_list.pack()
+
+    def copy_password(password):
+        pyperclip.copy(password)
+
+    for item in website_list:
         
+        CTkLabel(list_popup_list, text=f"{item}:").grid(row=rowsite, column=0)
+        rowsite += 1
+    for item in username_list:
         
+        CTkLabel(list_popup_list, text=item).grid(row=rowname, column=1, padx=5)
+        rowname += 1
+
+    for item in password_list:
+        copy = lambda password=item: copy_password(password)
+        CTkButton(list_popup_list, image=copy_image, width=30, height=30, text="", command=copy).grid(row=rowpass, column=2, padx=5)
+        rowpass += 1
+
+    
+default_username = "default_value.txt"
+
+def save_default_value():
+    with open(default_username, 'w') as file:
+        file.write(username_entry.get())
+
+def load_default_value():
+    try:
+        with open(default_username, 'r') as file:
+            return file.read().strip()
+    except FileNotFoundError:
+        return ""
+
+        
+def on_program_start():
+    default_value = load_default_value()
+    return default_value
+
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -126,7 +241,8 @@ username_entry = CTkEntry(window, width=350)
 password_entry = CTkEntry(window, width=210)
 generate_button = CTkButton(window, text="Generate Password", corner_radius=25, command=generate_password)
 add_button = CTkButton(window, text="Save Password", width=350, corner_radius=25, fg_color="#bb0000", hover_color="#800000", command=Save)
-list_button = CTkButton(window, text="Show Current Websites/Apps", width=350, corner_radius=25)
+list_button = CTkButton(window, text="Show Current Websites/Apps", width=350, corner_radius=25, command=list_button_press)
+default_button = CTkButton(window, text="Set Current Email/Username as Default", width=150, corner_radius=25, command=save_default_value)
 
 
 website_label.grid(row=2, column=0,)
@@ -134,14 +250,16 @@ username_label.grid(row=3, column=0)
 password_label.grid(row=4, column=0)
 website_entry.grid(row=2, column=1, columnspan=2)
 username_entry.grid(row=3, column=1, columnspan=2)
-username_entry.insert(0, "")
+username_entry.insert(0, on_program_start())
 password_entry.grid(row=4, column=1)
 
 generate_button.grid(row=4, column=2)
 add_button.grid(row=5, column=1, columnspan=2)
 list_button.grid(row=6, column=1, columnspan=2)
+default_button.grid(row=8, column=1, columnspan=2)
 
 window.grid_rowconfigure(1, minsize=20)
+window.grid_rowconfigure(7, minsize=20)
 
 
 window.mainloop()

@@ -1,1 +1,22 @@
-{}
+{
+    "Amazon": {
+        "Username": "amazon name",
+        "Password": "123"
+    },
+    "Ebay": {
+        "Username": "ebay name",
+        "Password": "bbb"
+    },
+    "Facebook": {
+        "Username": "facebook name",
+        "Password": "ccc"
+    },
+    "Instagram": {
+        "Username": "Aaron",
+        "Password": "3ROj##b9E(rnQ*5"
+    },
+    "Baldurs Gate": {
+        "Username": "Aaron",
+        "Password": "75spH6u6XTrF&&"
+    }
+}
